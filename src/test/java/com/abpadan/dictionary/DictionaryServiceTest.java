@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class DictionaryServiceTest {
 
-	private DictionaryService dictionaryService;
+	private DictionaryService dictionaryService = new DictionaryService();;
 	private String key1 = "foo";
 	private String key1Value1 = "bar";
 	private String key1Value2 = "baz";
@@ -20,7 +20,7 @@ public class DictionaryServiceTest {
 
 	@Before
 	public void init() {
-		dictionaryService = new DictionaryService();
+		dictionaryService.clear();
 		dictionaryService.add(key1, key1Value1);
 		dictionaryService.add(key1, key1Value2);
 		dictionaryService.add(key2, key2Value1);
@@ -29,15 +29,21 @@ public class DictionaryServiceTest {
 
 	@Test
 	public void testAdd() {
+		String key1Value3 = "barz";
+		String key2Value3 = "tarz";
 		assertEquals(false, dictionaryService.isEmpty());
 		assertEquals(true, dictionaryService.containsKey(key1));
 		assertEquals(true, dictionaryService.containsKey(key2));
 		List<String> membersKeys1 = new ArrayList<>();
 		membersKeys1.add(key1Value1);
 		membersKeys1.add(key1Value2);
+		membersKeys1.add(key1Value3);
 		List<String> membersKeys2 = new ArrayList<>();
 		membersKeys2.add(key2Value1);
 		membersKeys2.add(key2Value2);
+		membersKeys2.add(key2Value3);
+		dictionaryService.add(key1, key1Value3);
+		dictionaryService.add(key2, key2Value3);
 		assertEquals(membersKeys1, dictionaryService.findMembers(key1));
 		assertEquals(membersKeys2, dictionaryService.findMembers(key2));
 	}

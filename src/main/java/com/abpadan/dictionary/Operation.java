@@ -7,7 +7,7 @@ public enum Operation {
 	CLEAR("Removes all keys and all values from the dictionary.", 1),
 	ITEMS("Returns all keys in the dictionary and all of their values.", 1),
 	JSON("Prints the dictionary as JSON.", 1),
-	KEYEXISTS("Returns whether a key exists or not.", 1), 
+	KEYEXISTS("Returns whether a key exists or not.", 2), 
 	KEYS("Returns all the keys in the dictionary.", 1),
 	LOAD("Loads an existing JSON dictionary into memory.", 2),
 	MEMBERS("Returns the collection of strings for the given key.", 2),

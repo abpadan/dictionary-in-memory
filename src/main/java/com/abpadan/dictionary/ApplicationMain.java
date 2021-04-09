@@ -130,7 +130,12 @@ public class ApplicationMain {
 	}
 
 	private void valueExists(String key, String value) {
-		System.out.println(dictionaryService.findMembers(key).contains(value));
+		List<String> members = dictionaryService.findMembers(key);
+		if (members == null) {
+			System.out.println(false);
+		} else {
+			System.out.println(members.contains(value));
+		}
 	}
 
 	private void keysExists(String key) {
@@ -156,7 +161,11 @@ public class ApplicationMain {
 		if (removed) {
 			System.out.println("Removed");
 		} else {
-			System.out.println("ERROR, value does not exist");
+			if (value == null) {
+				System.out.println("ERROR, key does not exist");
+			} else {				
+				System.out.println("ERROR, value does not exist");
+			}
 		}
 	}
 
@@ -192,9 +201,9 @@ public class ApplicationMain {
 		}
 	}
 
-	private void printList(List<String> string) {
-		for (int i = 0; i < string.size(); i++) {
-			System.out.println((i + 1) + ") " + string.get(i));
+	private void printList(List<String> list) {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println((i + 1) + ") " + list.get(i));
 		}
 	}
 
